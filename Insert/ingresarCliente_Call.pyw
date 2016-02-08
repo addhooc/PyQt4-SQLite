@@ -18,15 +18,11 @@ class Clientes(QtGui.QMainWindow):
         # self.ui.linePorcP.setFocus()
 
 
-
         # Tab order
         # self.setTabOrder(self.ui.lineCuotaP, self.ui.linePorcP)
         
         # Click Events
         self.click_metodo(self.ui.btn_Ingresar, self.ingresar_cliente)
-
-        # Enter Events
-        # self.enter_metodo(self.ui.linePorcD, self.modif_porc_d)
 
 
     # Metodoss
@@ -39,15 +35,6 @@ class Clientes(QtGui.QMainWindow):
         self.metodo = metodo
         return QtCore.QObject.connect(self.boton,QtCore.SIGNAL('clicked()'), self.metodo)
 
-    def enter_metodo(self, lineEdit, metodo):
-        '''Recibe un lineEdit y el método que se
-        ejecuta al pulsar enter.
-        Retorna el retorno del método solicitado'''
-        self.lineEdit = lineEdit
-        self.metodo = metodo
-        return QtCore.QObject.connect(self.lineEdit, QtCore.SIGNAL('returnPressed()'), self.metodo)
-
-    
             
     def ingresar_cliente(self):
 
@@ -107,55 +94,6 @@ class Clientes(QtGui.QMainWindow):
         p.close_cursor()
         p.close_conn()
 
-    def buscar_cliente(self):
-        b = Sql()
-        buscar = self.ui.lineApellidoBuscarClienteSub.text()
-        q = "SELECT * FROM Clientes WHERE NomCliente LIKE '%" + buscar + "%'"
-        cliente = b.query(q)
-        
-        if len(cliente) == 0:
-            self.ui.plainBuscar.appendPlainText("El cliente solicitado no existe en la Base de Datos.")
-            self.ui.lineApellidoBuscarClienteSub.setText('')
-            self.ui.lineApellidoBuscarClienteSub.setFocus()
-        else:
-            for c in cliente:
-                self.ui.plainBuscar.appendPlainText("\nID Rector:  " + c[0] + "\n" +
-                                                    "Nro. Carpeta:  " + c[1] + "\n\n" +
-                                                    "Nombre : " + c[2] +"\n" +
-                                                    "Documento:  " + c[3] + "\n" +
-                                                    "Direccion:  " + c[4] + "\n" +
-                                                    "Email:  " + c[5] + "\n" +
-                                                    "Teléfono:  " + c[6] + "\n\n")
-                self.ui.lineApellidoBuscarClienteSub.setText('')
-                self.ui.lineApellidoBuscarClienteSub.setFocus()
-        b.close_cursor()
-        b.close_conn()
-
-
-class Sql():
-    def __init__(self):
-        pass
-
-    def query(self, query):
-        '''Conecta a la BD. Ejecuta la sentencia SQL (query).
-        Retorna una lista de tuplas.
-        Cada tupla equivale a una fila de la BD.'''
-        self.conn = sqlite3.connect('C:/Users/Tincho/Desktop/Git/PyQt_Sqlite/Insert/clientes.sqlite')
-        self.c = self.conn.cursor()
-        self.c.execute(query)
-        return self.c.fetchall()
-        
-    def grabar(self):
-        "Graba los cambios"
-        return self.conn.commit()
-
-    def close_cursor(self):
-        "Cierra el cursor"
-        return self.c.close()
-    
-    def close_conn(self):
-        "Cierra la conexión a la BD"
-        return self.conn.close
 
 
 if __name__ == "__main__":
