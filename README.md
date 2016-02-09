@@ -1,1 +1,1 @@
-Trasteando con Python - SQLite y PyQt4
+Aprendiendo el lenguaje Python, SQLite y probando el desarrollo de GUI con PyQt4
