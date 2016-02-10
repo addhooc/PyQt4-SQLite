@@ -31,5 +31,5 @@ class Ventas_mensuales():
         # Retorna un valor resultado de la reduccion sujeta a sum
         return functools.reduce(sum, ventas)
 
-v = Ventas()
+v = Ventas_mensuales()
 print(v.total(ventas))
