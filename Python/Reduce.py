@@ -23,13 +23,13 @@ print(total(ventas))
 
 # Clase Ventas_mensuales
 
-class Ventas_mensuales():
+class VentasMensuales():
     def sum(a, b):
         return a + b
     def total(*args):
-        # Recibe una lista
-        # Retorna un valor resultado de la reduccion sujeta a sum
+        '''Recibe una lista
+        Retorna un valor resultado de la reduccion sujeta a sum'''
         return functools.reduce(sum, ventas)
 
-v = Ventas_mensuales()
+v = VentasMensuales()
 print(v.total(ventas))

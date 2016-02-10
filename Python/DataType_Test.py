@@ -1,7 +1,7 @@
 # Un ejemplo para validar tipos de datos.
-# La funcion recibe una clave del diccionario de tipos de datos
-# y retorna la funcion asoiada (key) a dicha clave
-# Cada funcion valida el tipo de dato
+# La funcion recibe una clave del diccionario de tipos de datos 'datas'
+# y retorna la funcion asociada (key) a dicha clave.
+# Cada funcion valida el tipo de dato ingresado.
 
 def data_type(data):
 
@@ -46,27 +46,3 @@ print(isTupla((1,2,3,4,5,6)))
 
 c = data_type('float')
 print(c(6))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
